@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script>
+			window.onload=function(){
+				var otab=document.getElementById('tab');
+				var otext1=document.getElementById('text1');
+				var obut1=document.getElementById('but1');
+				var otbody=otab.tBodies[0];
+				var otr=otbody.rows;
+/*				var oldcolor=" ";
+				//隔行显示区分颜色
+				for(var i=0;i<otr.length;i++){
+					if(i%2){
+						otr[i].style.background="";
+					}else{
+						otr[i].style.background="#ccc";
+					}
+				}*/
+				//一般搜索，高亮显示搜索行
+				obut1.onclick=function(){
+				  for(var i=0;i<otr.length;i++){	
+				  	var otext1_sp=otext1.value.split(' ');	
+					otr[i].style.background='';
+					for(var j=0;j<otext1_sp.length;j++){								    
+					   	var otr_tl=otr[i].cells[1].innerHTML.toLowerCase();
+					   	var otext1_tl=otext1_sp[j].toLowerCase();
+						if(otr_tl.search(otext1_tl)!=-1){
+							otr[i].style.background='yellow';
+						}
+					 }
+				   }
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		名字：<input id="text1" type="text" />
+		<input id="but1" type="button" value="搜索" />
+		<table id="tab" border="solid 1px " width="400px" >
+			<thead>
+				<tr>
+					<td>序号</td>
+					<td>名字</td>
+					<td>年龄</td>
+					<td>操作</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>张三</td>
+					<td>34</td>
+					<td><a>删除</a></td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>李四</td>
+					<td>23</td>
+					<td><a>删除</a></td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Bule</td>
+					<td>34</td>
+					<td><a>删除</a></td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>张宇</td>
+					<td>28</td>
+					<td><a>删除</a></td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>麻四</td>
+					<td>29</td>
+					<td><a>删除</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>
